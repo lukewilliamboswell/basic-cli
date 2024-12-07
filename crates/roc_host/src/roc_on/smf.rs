@@ -35,13 +35,21 @@ impl roc_std::RocRefcounted for Smf {
 
 impl<'a> From<&'a Smf> for midly::Smf<'a> {
     fn from(s: &'a Smf) -> midly::Smf<'a> {
+        println!("Converting tracks...");
+
         let tracks = s
             .tracks
-            .into_iter()
+            .as_slice()
+            .iter()
             .map(|track| {
+                println!("Track {:?}", track);
                 track
-                    .into_iter()
-                    .map(|track_event| track_event.into())
+                    .as_slice()
+                    .iter()
+                    .map(|track_event| {
+                        println!("TrackEvent {:?}", track_event);
+                        track_event.into()
+                    })
                     .collect()
             })
             .collect();

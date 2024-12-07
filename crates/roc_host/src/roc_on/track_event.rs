@@ -171,11 +171,20 @@ impl<'a> From<&'a TrackEventKind> for midly::TrackEventKind<'a> {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 #[repr(C)]
 pub struct TrackEvent {
     pub kind: TrackEventKind,
     pub delta: u32,
+}
+
+impl std::fmt::Debug for TrackEvent {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("TrackEvent")
+            .field("delta", &self.delta)
+            .field("kind", &self.kind)
+            .finish()
+    }
 }
 
 impl roc_std::RocRefcounted for TrackEvent {
