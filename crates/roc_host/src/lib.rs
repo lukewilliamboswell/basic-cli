@@ -1404,6 +1404,13 @@ pub extern "C" fn roc_fx_getLocales() -> RocResult<RocList<RocStr>, ()> {
 
 #[no_mangle]
 pub extern "C" fn roc_fx_sendMidi(smf: &roc_on::smf::Smf) -> RocResult<(), RocStr> {
-    dbg!(smf);
+    dbg!(&smf);
+
+    println!("converting to Midly");
+
+    let midi: midly::Smf = smf.into();
+
+    dbg!(midi);
+
     RocResult::ok(())
 }

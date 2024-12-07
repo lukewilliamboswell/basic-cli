@@ -17,22 +17,22 @@ module [
 ]
 
 import PlatformTasks
-import InternalMidi
+import InternalMIDI
 
-FpsTiming : InternalMidi.FpsTiming
-Format : InternalMidi.Format
-Timing : InternalMidi.Timing
-Header : InternalMidi.Header
-MidiMessage : InternalMidi.MidiMessage
-Bytes : InternalMidi.Bytes
-SmpteTime : InternalMidi.SmpteTime
-MaybeU16 : InternalMidi.MaybeU16
-MetaMessage : InternalMidi.MetaMessage
-TrackEventKindMidi : InternalMidi.TrackEventKindMidi
-TrackEventKind : InternalMidi.TrackEventKind
-TrackEvent : InternalMidi.TrackEvent
-Track : InternalMidi.Track
-Smf : InternalMidi.Smf
+FpsTiming : InternalMIDI.FpsTiming
+Format : InternalMIDI.Format
+Timing : InternalMIDI.Timing
+Header : InternalMIDI.Header
+MidiMessage : InternalMIDI.MidiMessage
+Bytes : InternalMIDI.Bytes
+SmpteTime : InternalMIDI.SmpteTime
+MaybeU16 : InternalMIDI.MaybeU16
+MetaMessage : InternalMIDI.MetaMessage
+TrackEventKindMidi : InternalMIDI.TrackEventKindMidi
+TrackEventKind : InternalMIDI.TrackEventKind
+TrackEvent : InternalMIDI.TrackEvent
+Track : InternalMIDI.Track
+Smf : InternalMIDI.Smf
 
 doThing : Smf -> Task {} Str
 doThing = \smf ->
