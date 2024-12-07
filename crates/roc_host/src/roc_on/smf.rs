@@ -1,11 +1,24 @@
 use crate::roc_on::header::Header;
 use crate::roc_on::track_event::TrackEvent;
 
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 #[repr(C)]
 pub struct Smf {
     pub tracks: roc_std::RocList<roc_std::RocList<TrackEvent>>,
     pub header: Header,
+}
+
+impl std::fmt::Debug for Smf {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut debug_struct = f.debug_struct("Smf");
+
+        debug_struct.field("header", &self.header);
+
+        let track_count = self.tracks.len();
+        debug_struct.field("track_count", &track_count);
+
+        debug_struct.finish()
+    }
 }
 
 impl roc_std::RocRefcounted for Smf {
