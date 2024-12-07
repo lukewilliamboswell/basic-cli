@@ -13,6 +13,7 @@ name = "roc_host"
 path = "src/lib.rs"
 
 [dependencies]
+midly = "0.5.3"
 roc_std.workspace = true
 roc_std_heap.workspace = true
 libc = "=0.2.155"

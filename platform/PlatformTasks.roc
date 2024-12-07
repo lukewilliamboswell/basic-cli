@@ -44,11 +44,13 @@ hosted PlatformTasks
         tempDir,
         getLocale,
         getLocales,
+        sendMidi,
     ]
     imports [
         InternalHttp.{ Request, InternalResponse },
         InternalCommand,
         InternalPath,
+        InternalMIDI,
     ]
 
 InternalIOErr : {
@@ -125,3 +127,5 @@ tempDir : Task (List U8) {}
 
 getLocale : Task Str {}
 getLocales : Task (List Str) {}
+
+sendMidi : InternalMIDI.Smf -> Task {} Str

@@ -1,0 +1,24 @@
+app [main] { pf: platform "../platform/main.roc" }
+
+import pf.Stdout
+import pf.MIDI
+
+main : Task {} [MidiErr Str]_
+main =
+
+    MIDI.doThing {
+        header: {
+            format: SingleTrack,
+            timing: Metrical 10,
+        },
+        tracks: [
+            [
+                { delta: 1, kind: Escape [] },
+                { delta: 2, kind: Midi { channel: 1, message: NoteOn { key: 1, vel: 2 } } },
+                { delta: 3, kind: Meta EndOfTrack },
+            ],
+        ],
+    }
+    |> Task.mapErr! MidiErr
+
+    Stdout.line! "Hello, World!"

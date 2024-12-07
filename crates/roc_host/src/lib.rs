@@ -22,6 +22,7 @@ use std::{env, io};
 use tokio::runtime::Runtime;
 
 mod glue;
+mod roc_on;
 
 thread_local! {
    static TOKIO_RUNTIME: Runtime = tokio::runtime::Builder::new_current_thread()
@@ -1399,4 +1400,10 @@ pub extern "C" fn roc_fx_getLocales() -> RocResult<RocList<RocStr>, ()> {
         roc_locales.push(l.to_string().as_str().into());
     }
     RocResult::ok(roc_locales)
+}
+
+#[no_mangle]
+pub extern "C" fn roc_fx_sendMidi(smf: &roc_on::smf::Smf) -> RocResult<(), RocStr> {
+    dbg!(smf);
+    RocResult::ok(())
 }
